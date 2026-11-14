@@ -1,0 +1,67 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3  # v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: unit tests
+        run: |
+          javac -d build/classes $(find src -name '*.java')
+          javac -cp build/classes -d build/test-classes $(find tests -name '*.java')
+          java -cp build/classes:build/test-classes gpt.tests.TestRunner
+
+  web-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3  # v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v4
+        with:
+          node-version: '22'
+      - name: JS/Java parity
+        run: node tests/parity.mjs
+      - name: browser smoke
+        run: |
+          node build-web.mjs
+          node tests/browser-smoke.mjs
+      - name: docs drift check
+        # docs/ is built strictly from web/src + the committed data/out
+        # artifacts, so a fresh build must match byte for byte.
+        run: |
+          rm -rf docs
+          node build-web.mjs
+          git diff --exit-code --stat -- docs/
+
+  supply-chain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
+        with:
+          fetch-depth: 0  # gitleaks scans the push range, which a shallow clone does not have
+      - name: gitleaks (full history, pinned binary)
+        # The hosted action scans the push event range (base^..head), which
+        # fails when the range touches the root commit; scan full history
+        # with a sha256-verified binary instead.
+        run: |
+          curl -sSfL -o /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz
+          echo "9991e0b2903da4c8f6122b5c3186448b927a5da4deef1fe45271c3793f4ee29c  /tmp/gitleaks.tar.gz" | sha256sum -c -
+          tar xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          /tmp/gitleaks git --redact --exit-code 2 --log-level warn --config .gitleaks.toml .
+      - name: semgrep (local rules, no account)
+        run: pipx run semgrep --config .github/semgrep-rules.yml --error web/src/ build-web.mjs tests/browser-smoke.mjs tests/parity.mjs

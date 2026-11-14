@@ -1,0 +1,5 @@
+title = "tinygpt gitleaks config"
+
+# No allowlist needed today: the repo contains no keys by design (static
+# site, no backends) and the shipped JS is unminified source. Add an
+# allowlist entry here only with a comment explaining the false positive.
