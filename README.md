@@ -72,3 +72,7 @@ committed) is the resumable trainer state.
 
 `DESIGN.md` documents the design system: type scale, palette, spacing,
 motion rules, and font licenses.
+
+## License
+
+Licensed under either of [MIT](LICENSE-MIT) or [Apache License 2.0](LICENSE-APACHE) at your option.
