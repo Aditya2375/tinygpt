@@ -6,8 +6,8 @@ single accent, hairline structure). No component code copied; everything below
 is hand-written CSS.
 
 ## Type
-- Display: Clash Display 600 (Fontshare, free license) - clamp(40px, 6vw, 72px), line-height 1.02, letter-spacing -0.03em.
-- Body: Satoshi 400/500 (Fontshare, free license) - 17px / 1.55, `text-wrap: pretty`.
+- Display: system UI stack, 600 weight - clamp(40px, 6vw, 72px), line-height 1.02, letter-spacing -0.03em.
+- Body: system UI stack, 400/500 - 17px / 1.55, `text-wrap: pretty`.
 - Data & labels: JetBrains Mono 400 (SIL OFL 1.1) - 11-14px; eyebrows uppercase, letter-spacing 0.08em.
 - Minimums: body >= 17px, mono labels >= 11px. No text below 11px.
 
@@ -35,6 +35,5 @@ is hand-written CSS.
 - Honest labels: model size, loss numbers and sample quality stated as-is.
 
 ## Asset licenses
-- Clash Display, Satoshi: Fontshare free license (Indian Type Foundry).
-- JetBrains Mono: SIL Open Font License 1.1.
+- JetBrains Mono: SIL Open Font License 1.1. No other webfonts bundled; display and body text use the system UI stack.
 - No illustrations or stock assets used.

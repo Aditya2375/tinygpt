@@ -1,7 +1,4 @@
 /* lob - same design language as sift: dark ink, warm paper, editorial type */
-@font-face { font-family: 'Clash Display'; src: url('fonts/clash-display-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Satoshi'; src: url('fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Satoshi'; src: url('fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
 @font-face { font-family: 'JetBrains Mono'; src: url('fonts/jetbrains-mono.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 
 :root {
@@ -26,7 +23,7 @@ p, .lede, .panel-sub { text-wrap: pretty; }
 body {
   background: var(--ink);
   color: var(--paper);
-  font-family: 'Satoshi', system-ui, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 17px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -44,7 +41,7 @@ a { color: inherit; }
   padding: 22px clamp(20px, 5vw, 64px);
   border-bottom: 1px solid var(--line);
 }
-.wordmark { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; }
+.wordmark { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; }
 .top-stats { font-family: var(--mono); font-size: 12px; color: var(--paper-faint); flex: 1; }
 .source {
   font-family: var(--mono); font-size: 12px; color: var(--paper-dim);
@@ -57,7 +54,7 @@ a { color: inherit; }
 main { padding: 0 clamp(20px, 5vw, 64px); max-width: 1180px; margin: 0 auto; }
 .hero { padding: clamp(48px, 8vh, 96px) 0 32px; }
 h1 {
-  font-family: 'Clash Display', sans-serif; font-weight: 600;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
   font-size: clamp(40px, 6vw, 72px); line-height: 1.02; letter-spacing: -0.03em;
 }
 h1 .dim { color: var(--paper-faint); }
@@ -96,7 +93,7 @@ h1 .dim { color: var(--paper-faint); }
 /* ---- panels ---- */
 .panel { border: 1px solid var(--line); border-radius: 14px; background: var(--ink-2); padding: 20px 22px; margin-bottom: 22px; }
 .panel-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
-h2 { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; }
+h2 { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; }
 .panel-sub { color: var(--paper-faint); font-size: 14px; max-width: 68ch; }
 .panel-sub.tight { margin-top: 10px; font-family: var(--mono); font-size: 12px; }
 canvas { width: 100%; display: block; }
@@ -120,7 +117,7 @@ canvas { width: 100%; display: block; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 22px; }
 .stat { border: 1px solid var(--line); border-radius: 12px; background: var(--ink-2); padding: 16px 18px; }
 .stat .k { font-family: var(--mono); font-size: 11px; color: var(--paper-faint); text-transform: uppercase; letter-spacing: 0.08em; }
-.stat .v { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 28px; margin-top: 6px; letter-spacing: -0.01em; }
+.stat .v { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 28px; margin-top: 6px; letter-spacing: -0.01em; }
 .stat .v.pos { color: var(--bid); }
 .stat .v.neg { color: var(--ask); }
 
@@ -130,7 +127,7 @@ canvas { width: 100%; display: block; }
 .mo { padding: 4px 2px; }
 .mo + .mo { border-top: 1px solid var(--line); padding-top: 16px; }
 .mo .who { font-family: var(--mono); font-size: 12px; color: var(--paper-faint); }
-.mo .amt { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 30px; margin: 6px 0 4px; }
+.mo .amt { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 30px; margin: 6px 0 4px; }
 .mo .amt.pos { color: var(--bid); }
 .mo .amt.neg { color: var(--ask); }
 .mo .how { font-size: 13.5px; color: var(--paper-dim); }
@@ -141,7 +138,7 @@ canvas { width: 100%; display: block; }
 .cards { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 28px; }
 .cards li { border: 1px solid var(--line); border-radius: 14px; background: var(--ink-2); padding: 18px 20px; }
 .cards .num { font-family: var(--mono); font-size: 12px; color: var(--accent-dim); }
-.cards h3 { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 18px; margin: 8px 0 6px; }
+.cards h3 { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 18px; margin: 8px 0 6px; }
 .cards p { color: var(--paper-dim); font-size: 14px; }
 
 /* ---- footer ---- */
@@ -166,7 +163,7 @@ footer p { color: var(--paper-faint); font-size: 13px; max-width: 440px; }
 .stat:nth-child(4n+1) { border-left: none; }
 @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(-n+4) { border-top: 1px solid var(--line); } .stat:nth-child(-n+2) { border-top: none; } .stat:nth-child(4n+1) { border-left: 1px solid var(--line); } .stat:nth-child(odd) { border-left: none; } }
 .stat .k { font-family: var(--mono); font-size: 11px; color: var(--paper-faint); text-transform: uppercase; letter-spacing: 0.08em; }
-.stat .v { font-family: 'Clash Display', sans-serif; font-weight: 600; font-size: 24px; margin-top: 4px; }
+.stat .v { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 24px; margin-top: 4px; }
 .samples { display: flex; flex-direction: column; gap: 10px; }
 .sample { padding: 12px 2px; border-top: 1px solid var(--line); }
 .sample:first-child { border-top: none; padding-top: 2px; }

@@ -156,10 +156,9 @@ page memory (no localStorage, no URL mutation).
 32. **(25) Vercel secrets** - N/A. Hosted on GitHub Pages, not Vercel; and
     no secrets exist regardless.
 33. **(26) Pin or self-host third-party scripts and fonts** - PASS. Zero CDN
-    scripts, zero external assets: app code and the four woff2 fonts (Clash
-    Display, Satoshi regular/medium, JetBrains Mono - Fontshare/JetBrains
-    terms, see DESIGN.md) are self-hosted in docs/. The page works fully
-    offline after first load.
+    scripts, zero external assets: app code and the self-hosted JetBrains
+    Mono woff2 (SIL OFL, see DESIGN.md) live in docs/; UI text renders in
+    the system font stack. The page works fully offline after first load.
 34. **(27) Forms go to a service with spam protection** - N/A. No forms; the
     controls post nothing anywhere.
 35. **(28) Delete old deployments** - N/A to this new repo; owner's standing
